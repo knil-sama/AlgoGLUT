@@ -12,8 +12,8 @@ void init_scene(void){
 // Consiste à définir une couleur(le blanc) et une forme (carré)
 void render_scene(void){
 
-	float color[3] = {0.3,0.2,0.7};
-	bresenham(0,0,640,480,color);
+	float color[3] = {1.0,1.0,1.0};
+	bresenham(10,10,300,300,color);
 }
 
 // fonction de call-back pour l'affichage dans la fenêtre
