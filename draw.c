@@ -34,6 +34,41 @@ void bresenham(int xa,int ya,int xb,int yb,float *c)
     }
 }
 
+void traceCercle(int xo, int yo, int r, float *c)
+{
+    int x=0;
+    int y=r;
+    int ddx = 1;
+    int ddy = -2*r;
+    int f = 1-r;
+
+    drawPixel(xo,yo+r,c);
+    drawPixel(xo,yo+r,c);
+    drawPixel(xo+r,yo,c);
+    drawPixel(xo-r,yo,c);
+    while(y>x)
+    {
+        if(f>=0)
+        {
+            y--;
+            ddy+=2;
+            f+= ddy;
+        }
+        x++;
+        ddx+=2;
+        f+= ddx;
+        drawPixel(xo+x,yo+y,c);
+        drawPixel(xo-x,yo+y,c);
+        drawPixel(xo+x,yo-y,c);
+        drawPixel(xo-x,yo-y,c);
+        drawPixel(xo+y,yo+x,c);
+        drawPixel(xo-y,yo+x,c);
+        drawPixel(xo+y,yo-x,c);
+        drawPixel(xo-y,yo-x,c);
+    }
+}
+
+//Garder l'algo de bresenham généralisé en bas, il est un peu long
 void bresenhamG(int xa,int ya,int xb,int yb,float *c)
 {
     int dx = xb-xa;
@@ -107,7 +142,7 @@ void bresenhamG(int xa,int ya,int xb,int yb,float *c)
                             e = e+dy;
                             if(e<0)
                             {
-                                ya++;
+                                ya--;
                                 e = e+dx;
                             }
                         }
@@ -146,6 +181,7 @@ void bresenhamG(int xa,int ya,int xb,int yb,float *c)
         }
         else
         {
+            dy = yb-ya;
             if(dy!=0)
             {
                 if(dy>0)
@@ -251,6 +287,7 @@ void bresenhamG(int xa,int ya,int xb,int yb,float *c)
     }
     else
     {
+        dy = yb-ya;
         if(dy != 0)
         {
             if(dy>0)
