@@ -69,12 +69,207 @@ void bresenhamG(int xa,int ya,int xb,int yb,float *c)
                     }
                     else
                     {
-                        
+                        int e = dy;
+                        dy = 2*e;
+                        dx = 2*dx;
+                        while(1)
+                        {
+                            drawPixel(xa,ya,c);
+                            ya++;
+                            if(ya==yb)
+                            {
+                                break;
+                            }
+                            e = e-dx;
+                            if(e<0)
+                            {
+                                xa++;
+                                e = e+dy;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if(dx>= -dy)
+                    {
+                        int e = dx;
+                        dx = 2*e;
+                        dy = 2*dy;
+                        while(1)
+                        {
+                            drawPixel(xa,ya,c);
+                            xa++;
+                            if(xa == xb)
+                            {
+                                break;
+                            }
+                            e = e+dy;
+                            if(e<0)
+                            {
+                                ya++;
+                                e = e+dx;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        int e = dy;
+                        dy = 2*e;
+                        dx = 2*dx;
+                        while(1)
+                        {
+                            drawPixel(xa,ya,c);
+                            ya--;
+                            if(ya == yb)
+                            {
+                                break;
+                            }
+                            e = e+dx;
+                            if(e>0)
+                            {
+                                xa++;
+                                e = e+dy;
+                            }
+                        }
                     }
                 }
             }
+            else
+            {
+                do
+                {
+                    drawPixel(xa,ya,c);
+                    xa++;
+                }while(xa != xb);
+            }
+        }
+        else
+        {
+            if(dy!=0)
+            {
+                if(dy>0)
+                {
+                    if(-dx>= dy)
+                    {
+                        int e = dx;
+                        dx = 2*e;
+                        dy = 2*dy;
+                        while(1)
+                        {
+                            drawPixel(xa,ya,c);
+                            xa--;
+                            if(xa == xb)
+                            {
+                                break;
+                            }
+                            e = e+dy;
+                            if(e >= 0)
+                            {
+                                ya++;
+                                e = e+dx;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        int e = dy;
+                        dy = 2*e;
+                        dx = 2*dx;
+                        while(1)
+                        {
+                            drawPixel(xa,ya,c);
+                            ya++;
+                            if(ya==yb)
+                            {
+                                break;
+                            }
+                            e = e+dx;
+                            if(e<=0)
+                            {
+                                xa--;
+                                e = e+dy;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if(dx<= dy)
+                    {
+                        int e = dx;
+                        dx = 2*e;
+                        dy = 2*dy;
+                        while(1)
+                        {
+                            drawPixel(xa,ya,c);
+                            xa--;
+                            if(xa == xb)
+                            {
+                                break;
+                            }
+                            e = e-dy;
+                            if(e<0)
+                            {
+                                ya--;
+                                e = e+dx;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        int e = dy;
+                        dy = 2*e;
+                        dx = 2*dx;
+                        while(1)
+                        {
+                            drawPixel(xa,ya,c);
+                            ya--;
+                            if(ya == yb)
+                            {
+                                break;
+                            }
+                            e = e+dx;
+                            if(e>=0)
+                            {
+                                xa--;
+                                e = e+dy;
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                do
+                {
+                    drawPixel(xa,ya,c);
+                    xa--;
+                }while(xa != xb);
+            }
         }
     }
-
+    else
+    {
+        if(dy != 0)
+        {
+            if(dy>0)
+            {
+                do
+                {
+                    drawPixel(xa,ya,c);
+                    ya++;
+                }while(ya != yb);
+            }
+            else
+            {
+                do
+                {
+                    drawPixel(xa,ya,c);
+                    ya--;
+                }while(ya != yb);
+            }
+        }
+    }
 }
 

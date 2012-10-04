@@ -13,7 +13,7 @@ void init_scene(void){
 void render_scene(void){
 
 	float color[3] = {1.0,1.0,1.0};
-	bresenham(10,10,300,300,color);
+	bresenhamG(600,30,100,200,color);
 }
 
 // fonction de call-back pour l'affichage dans la fenêtre
@@ -37,7 +37,7 @@ GLvoid window_reshape(GLsizei width, GLsizei height){
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glOrtho(-2.0, 2.0, -2.0, 2.0, -2.0, 2.0);
+	glOrtho(0, 640, 480, 0, 0, 640);
 
 	// toutes les transformations suivantes s 'appliquent au modèle de vue 
 	glMatrixMode(GL_MODELVIEW);
