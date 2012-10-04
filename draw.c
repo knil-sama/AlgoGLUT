@@ -43,6 +43,7 @@ void bresenhamG(int xa,int ya,int xb,int yb,float *c)
         if(dx>0)
         {
             if(dy!=0)
+            {
                 if(dy>0)
                 {
                     if(dx>= dy)
@@ -50,13 +51,13 @@ void bresenhamG(int xa,int ya,int xb,int yb,float *c)
                         int e = dx;
                         dx = 2*e;
                         dy = 2*dy;
-                        while()
+                        while(1)
                         {
-                            drawPixel(xa,ya);
+                            drawPixel(xa,ya,c);
                             xa++;
-                            if(xa = xb)
+                            if(xa == xb)
                             {
-                                break();
+                                break;
                             }
                             e = e-dy;
                             if(e <0)
@@ -71,6 +72,7 @@ void bresenhamG(int xa,int ya,int xb,int yb,float *c)
                         
                     }
                 }
+            }
         }
     }
 
