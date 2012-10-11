@@ -1,3 +1,4 @@
+#include "draw.h"
 #include "contexte.h"
 
 void drawPixel(int x, int y, float *c)
