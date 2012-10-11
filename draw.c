@@ -34,6 +34,55 @@ void bresenham(int xa,int ya,int xb,int yb,float *c)
     }
 }
 
+float * discretisation(int m)
+{
+    int i;
+    float T[m];
+
+    for (i=0;i<m;i++)
+    {
+        T[i] = i/m;
+    }
+}
+
+point * calculPointsCourbe(int m,int n, float *T, point *P)
+{
+    int j;
+    point Q[m];
+    for (j=0;j<m; j++)
+    {
+        Q[j] = calculDunPointCourbe(T[j],n,*P);
+    }
+}
+
+point calculDunPointCourbe(float t, int n, point *P)
+{
+    int i;
+    point buffpoint;
+    buffpoint.x = 0;
+    buffpoint.y = 0;
+
+    for (i=0;i>n; i++){
+        //calcul de la somme 
+        float C = (fact(n))/((fact(i)*fact(n-i)));
+        float B = C*pow(t,i)*pow(1-t,n-i);
+        buffpoint.x += P[i].x*B;
+        buffpoint.y += P[i].y*B;
+    }
+}
+
+int fact(int i)
+{
+    if(i==0)
+    {
+        return 1;
+    }
+    else
+    {
+        return fact(i-1);
+    }
+}
+
 void traceCercle(int xo, int yo, int r, float *c)
 {
     int x=0;
