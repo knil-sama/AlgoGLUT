@@ -48,11 +48,12 @@ float * discretisation(int m)
 point * calculPointsCourbe(int m,int n, float *T, point *P)
 {
     int j;
-    point Q[m];
+    point *Q = (point *)malloc(m*sizeof(point));
     for (j=0;j<m; j++)
     {
-        Q[j] = calculDunPointCourbe(T[j],n,*P);
+        Q[j] = calculDunPointCourbe(T[j],n,P);
     }
+    return Q;
 }
 
 point calculDunPointCourbe(float t, int n, point *P)
@@ -69,6 +70,7 @@ point calculDunPointCourbe(float t, int n, point *P)
         buffpoint.x += P[i].x*B;
         buffpoint.y += P[i].y*B;
     }
+    return buffpoint;
 }
 
 int fact(int i)
